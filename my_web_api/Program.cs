@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using my_web_api.Data;
+
 internal class Program
 {
     private static void Main(string[] args)
@@ -10,6 +13,10 @@ internal class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddDbContext<MyDBContext>(option =>
+        {
+            option.UseSqlServer(Configuration.GetConnectionString("MyDB"));
+        });
 
         var app = builder.Build();
 
@@ -28,4 +35,6 @@ internal class Program
 
         app.Run();
     }
+
+    public static IConfiguration Configuration { get; }
 }
