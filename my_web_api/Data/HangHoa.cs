@@ -13,7 +13,11 @@ namespace my_web_api.Data
         public String MoTa { get; set; }
         [Range(0,double.MaxValue)]
         public double DonGia { get; set; }
-
         public byte GiamGia { get; set; }
+
+        public int? MaLoai { get; set; }
+
+        [ForeignKey("MaLoai")]
+        public Loai Loai { get; set; }
     }
 }
