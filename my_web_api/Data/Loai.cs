@@ -9,6 +9,7 @@ namespace my_web_api.Data
         [Required,MaxLength(50)]
         public String TenLoai { get; set; }
 
+
         public virtual ICollection<HangHoa> HangHoas { get; set; }
     }
 }
