@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using my_web_api.Data;
+using my_web_api.Services;
 
 internal class Program
 {
@@ -16,6 +17,7 @@ internal class Program
         builder.Services.AddDbContext<MyDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyDB")));
         builder.Services.AddAuthentication();
+        builder.Services.AddScoped<ILoaiReponsitory, LoaiReponsitory>();
 
 
         var app = builder.Build();
